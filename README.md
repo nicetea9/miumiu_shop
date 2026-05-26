@@ -51,14 +51,6 @@ curl -X POST http://127.0.0.1:8000/products \
   -d '{"name":"Product A","category_id":1,"price":100.0}'
 ```
 
-**Тестирование**
-
-Запуск тестов (pytest):
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 -m pytest --cov=app --cov-report=term-missing -v
-```
 
 **Разработка**
 - Бизнес-логика находится в `app/use_cases/`.
