@@ -7,7 +7,7 @@ from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
-# ── Category ──────────────────────────────────────────────
+# ── Category
 
 class CategoryIn(BaseModel):
     name: str = Field(..., max_length=100)
@@ -27,8 +27,7 @@ class CategoryOut(BaseModel):
     created_at: datetime
 
 
-# ── Product ───────────────────────────────────────────────
-
+# ── Product
 class ProductIn(BaseModel):
     name: str = Field(..., max_length=200)
     price: Decimal = Field(..., gt=0)
@@ -59,7 +58,7 @@ class ProductOut(BaseModel):
     created_at: datetime
 
 
-# ── Order ─────────────────────────────────────────────────
+# ── Order
 
 class OrderItemIn(BaseModel):
     product_id: int

@@ -38,14 +38,13 @@ async def root():
     return {"status": "ok", "message": "Miu Miu Shop API"}
 
 
-# # Serve custom Swagger UI with prefill script
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():
     swagger_html = get_swagger_ui_html(openapi_url=app.openapi_url, title=f"{app.title} - Docs")
-    # insert our small script before </body> so it executes correctly
+
     content = swagger_html.body.decode() if isinstance(swagger_html.body, (bytes, bytearray)) else str(swagger_html.body)
     if "</body>" in content:
         content = content.replace("</body>", '\n<script src="/static/swagger_prefill.js"></script>\n</body>')
